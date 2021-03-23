@@ -9,7 +9,7 @@ export const useAnimatedScale : Function = () => {
     const [scale, setScale] : [number, Function] = useState(0)
     const [animated, setAnimated] : [boolean, Function] = useState(false)
     return {
-        sf : Math.sin(scale), 
+        sf : sinify(scale), 
         start() {
             if (!animated) {
                 setAnimated(true)
@@ -49,6 +49,7 @@ export const useDimension : Function = () => {
 
 export const useStyle = (w : number, h : number, scale : number) => {
     const size : number = Math.min(w, h) / 10
+    //console.log("SCALE", scale)
     return {
         blockStyle() : Object {
             return {
@@ -61,8 +62,8 @@ export const useStyle = (w : number, h : number, scale : number) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 background: 'orange',
-                color : 'white'
-                fontSize : `${(size * scale) / 3}`,
+                color : 'white',
+                fontSize : `${(size * scale) / 3}px`,
             }
         }
     }
